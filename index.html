@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Clínica Wasser — estética facial avançada, harmonização, botox, bioestimulação, tratamento capilar, scanner facial e saúde da pele com naturalidade." />
+  <title>Clínica Wasser | Estética avançada com naturalidade</title>
+
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --canvas: #fbf5ef;
+      --paper: #fffdf9;
+      --warm: #f1e2d6;
+      --nude: #e7cfc0;
+      --rose: #ad746b;
+      --rose-dark: #71423d;
+      --wine: #422622;
+      --brown: #32211e;
+      --muted: #806b62;
+      --soft: #a89084;
+      --gold: #c9a15d;
+      --gold-soft: #ead3a2;
+      --line: rgba(66, 38, 34, .12);
+      --line-strong: rgba(66, 38, 34, .20);
+      --shadow: 0 28px 90px rgba(66, 38, 34, .14);
+      --shadow-soft: 0 18px 50px rgba(66, 38, 34, .08);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--canvas);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--brown);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(201, 161, 93, .26), transparent 30%),
+        radial-gradient(circle at 90% 6%, rgba(173, 116, 107, .26), transparent 34%),
+        linear-gradient(180deg, #fffaf6 0%, var(--canvas) 45%, #f2e2d7 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .44;
+      background-image:
+        linear-gradient(rgba(66,38,34,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(66,38,34,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(251, 245, 239, .80);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .brand-symbol {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), transparent),
+        linear-gradient(135deg, var(--wine), var(--rose) 55%, var(--gold));
+      box-shadow: 0 16px 36px rgba(66,38,34,.22);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.06rem;
+      letter-spacing: .01em;
+      line-height: 1;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-menu {
+      display: none;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .btn {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 0;
+      font: inherit;
+      font-size: .92rem;
+      font-weight: 900;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: saturate(1.04);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), transparent),
+        linear-gradient(135deg, var(--wine), var(--rose-dark) 50%, #a7783f);
+      box-shadow: 0 18px 44px rgba(113, 66, 61, .26);
+    }
+
+    .btn-ghost {
+      color: var(--wine);
+      background: rgba(255,253,249,.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .desktop-cta {
+      display: none;
+    }
+
+    .hero {
+      position: relative;
+      padding: 38px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .label {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--rose-dark);
+      background: rgba(255,253,249,.70);
+      border: 1px solid rgba(201,161,93,.26);
+      box-shadow: 0 14px 34px rgba(66,38,34,.06);
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,161,93,.16);
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--brown);
+    }
+
+    .hero-title {
+      margin-top: 18px;
+      max-width: 680px;
+      font-size: clamp(3rem, 15vw, 6.75rem);
+      line-height: .84;
+      letter-spacing: -.065em;
+    }
+
+    .hero-title em {
+      display: block;
+      color: var(--rose-dark);
+      font-style: normal;
+    }
+
+    .hero-subtitle {
+      margin-top: 20px;
+      max-width: 640px;
+      color: var(--brown);
+      font-size: clamp(1.18rem, 4vw, 1.55rem);
+      line-height: 1.42;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .hero-text {
+      margin-top: 14px;
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .micro-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .micro-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0 13px;
+      border-radius: 999px;
+      background: rgba(255,253,249,.64);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .micro-proof span::before {
+      content: "✓";
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--wine);
+      background: rgba(201,161,93,.18);
+      font-size: .72rem;
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .portrait-card {
+      position: relative;
+      height: 530px;
+      border-radius: 40px;
+      overflow: hidden;
+      background: var(--nude);
+      border: 1px solid rgba(255,255,255,.70);
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(50,33,30,.02), transparent 35%),
+        linear-gradient(0deg, rgba(50,33,30,.50), transparent 55%);
+      pointer-events: none;
+    }
+
+    .portrait-card img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.92) contrast(1.02);
+    }
+
+    .signature-card {
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      bottom: 16px;
+      z-index: 3;
+      padding: 18px;
+      border-radius: 26px;
+      color: #fff;
+      background: rgba(50,33,30,.62);
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 22px 54px rgba(0,0,0,.18);
+    }
+
+    .signature-card small {
+      display: block;
+      color: rgba(255,255,255,.72);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .signature-card strong {
+      display: block;
+      margin-top: 9px;
+      font-size: 1.05rem;
+      line-height: 1.38;
+    }
+
+    .scan-card {
+      position: absolute;
+      top: 16px;
+      right: 14px;
+      z-index: 4;
+      width: min(190px, 48vw);
+      padding: 15px;
+      border-radius: 25px;
+      background: rgba(255,253,249,.78);
+      border: 1px solid rgba(255,255,255,.70);
+      backdrop-filter: blur(17px);
+      box-shadow: 0 18px 45px rgba(66,38,34,.15);
+    }
+
+    .scan-card span {
+      display: block;
+      color: var(--rose-dark);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .scan-card strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--brown);
+      font-size: .95rem;
+      line-height: 1.26;
+    }
+
+    .scan-card small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .75rem;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .stats-strip {
+      padding: 0 0 24px;
+    }
+
+    .stats-box {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 30px;
+      background: rgba(255,253,249,.58);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat {
+      padding: 19px;
+      border-radius: 23px;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(247,237,229,.60));
+      border: 1px solid rgba(66,38,34,.09);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--brown);
+      font-size: clamp(1.55rem, 8vw, 2.7rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      display: block;
+      margin-bottom: 11px;
+      color: var(--rose-dark);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      max-width: 680px;
+      font-size: clamp(2.15rem, 9vw, 4.2rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+    }
+
+    .section .lead {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .editorial-panel {
+      display: grid;
+      gap: 18px;
+      padding: 20px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(255,253,249,.78), rgba(241,226,214,.60)),
+        radial-gradient(circle at 100% 0%, rgba(201,161,93,.20), transparent 38%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .editorial-image {
+      min-height: 330px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--nude);
+    }
+
+    .editorial-image img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .editorial-copy {
+      padding: 8px 2px;
+    }
+
+    .editorial-copy h3 {
+      font-size: clamp(1.8rem, 8vw, 3.2rem);
+      line-height: .98;
+      letter-spacing: -.04em;
+    }
+
+    .editorial-copy p {
+      margin-top: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .quiet-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .quiet-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 19px;
+      background: rgba(255,253,249,.64);
+      border: 1px solid rgba(66,38,34,.09);
+    }
+
+    .quiet-item i {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--wine);
+      background: rgba(201,161,93,.18);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .quiet-item strong {
+      display: block;
+      color: var(--brown);
+      font-size: .95rem;
+    }
+
+    .quiet-item span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .treatments {
+      display: grid;
+      gap: 14px;
+    }
+
+    .treatment-card {
+      position: relative;
+      min-height: 170px;
+      padding: 22px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,253,249,.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .treatment-card::after {
+      content: "";
+      position: absolute;
+      width: 145px;
+      height: 145px;
+      right: -50px;
+      bottom: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,161,93,.28), transparent 65%);
+      pointer-events: none;
+    }
+
+    .treatment-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: var(--wine);
+      background: rgba(201,161,93,.15);
+      border: 1px solid rgba(201,161,93,.24);
+      font-size: .82rem;
+      font-weight: 900;
+    }
+
+    .treatment-card h3 {
+      margin-top: 18px;
+      font-size: 1.35rem;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+    }
+
+    .treatment-card p {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.58;
+      font-weight: 500;
+    }
+
+    .difference {
+      position: relative;
+      padding: 26px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(50,33,30,.96), rgba(113,66,61,.91)),
+        url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1700&q=86") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .difference::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 92% 0%, rgba(201,161,93,.30), transparent 30%),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.10));
+      pointer-events: none;
+    }
+
+    .difference-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 26px;
+    }
+
+    .difference h2 {
+      color: #fff;
+    }
+
+    .difference .kicker,
+    .difference .lead {
+      color: rgba(255,255,255,.74);
+    }
+
+    .difference-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .difference-item {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 21px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(14px);
+    }
+
+    .difference-item i {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--wine);
+      background: linear-gradient(135deg, #fff6df, var(--gold));
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .difference-item strong {
+      display: block;
+      color: #fff;
+      font-size: .98rem;
+    }
+
+    .difference-item span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255,255,255,.72);
+      font-size: .88rem;
+      line-height: 1.48;
+      font-weight: 500;
+    }
+
+    .experience-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .experience-card {
+      min-height: 210px;
+      padding: 22px;
+      border-radius: 28px;
+      background: rgba(255,253,249,.70);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .experience-card .tag {
+      display: inline-flex;
+      min-height: 32px;
+      align-items: center;
+      padding: 0 11px;
+      border-radius: 999px;
+      color: var(--rose-dark);
+      background: rgba(201,161,93,.14);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .experience-card h3 {
+      margin-top: 18px;
+      font-size: 1.48rem;
+      line-height: 1.04;
+      letter-spacing: -.025em;
+    }
+
+    .experience-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: .94rem;
+      font-weight: 500;
+    }
+
+    .feedbacks {
+      display: grid;
+      gap: 14px;
+    }
+
+    .feedback-card {
+      padding: 23px;
+      border-radius: 28px;
+      background: rgba(255,253,249,.74);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: .08em;
+      font-size: .88rem;
+    }
+
+    .feedback-card p {
+      margin-top: 14px;
+      color: var(--brown);
+      font-size: .98rem;
+      line-height: 1.67;
+      font-weight: 600;
+    }
+
+    .feedback-card strong {
+      display: block;
+      margin-top: 18px;
+      color: var(--rose-dark);
+      font-size: .88rem;
+      font-weight: 900;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 22px;
+      border-radius: var(--radius-xl);
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201,161,93,.28), transparent 38%),
+        linear-gradient(180deg, rgba(255,253,249,.84), rgba(241,226,214,.70));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(173,116,107,.22), transparent 65%);
+    }
+
+    .cta-panel > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-panel h2 {
+      max-width: 780px;
+      margin-inline: auto;
+    }
+
+    .cta-panel p {
+      max-width: 610px;
+      margin: 17px auto 0;
+      color: var(--muted);
+      line-height: 1.72;
+      font-weight: 500;
+    }
+
+    .cta-panel .btn {
+      width: 100%;
+      max-width: 360px;
+      margin-top: 24px;
+    }
+
+    .footer {
+      padding: 38px 0 42px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      display: grid;
+      gap: 18px;
+      padding-top: 25px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer strong {
+      color: var(--brown);
+    }
+
+    .footer p {
+      margin-top: 6px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-pill {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,253,249,.62);
+      border: 1px solid var(--line);
+      font-size: .86rem;
+      font-weight: 800;
+    }
+
+    @media (min-width: 720px) {
+      .desktop-cta {
+        display: inline-flex;
+      }
+
+      .nav-menu {
+        display: flex;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-actions .btn {
+        min-width: 195px;
+      }
+
+      .stats-box {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .treatments {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .treatment-card.wide {
+        grid-column: span 2;
+      }
+
+      .experience-grid,
+      .feedbacks {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-box {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .hero {
+        padding: 70px 0 60px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr .88fr;
+        gap: 58px;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .section-head {
+        grid-template-columns: .95fr 1fr;
+        align-items: end;
+        margin-bottom: 36px;
+      }
+
+      .editorial-panel {
+        grid-template-columns: .9fr 1fr;
+        align-items: stretch;
+        padding: 26px;
+      }
+
+      .editorial-copy {
+        padding: 22px 10px 22px 16px;
+      }
+
+      .editorial-image {
+        min-height: 520px;
+      }
+
+      .difference {
+        padding: 38px;
+      }
+
+      .difference-inner {
+        grid-template-columns: .9fr 1fr;
+        align-items: end;
+      }
+
+      .cta-panel {
+        padding: 46px 34px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .container {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 3.05rem;
+      }
+
+      .portrait-card {
+        height: 500px;
+        border-radius: 34px;
+      }
+
+      .scan-card {
+        width: 165px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Clínica Wasser">
+        <span class="brand-symbol">W</span>
+        <span class="brand-copy">
+          <strong>Clínica Wasser</strong>
+          <span>Estética avançada & saúde da pele</span>
+        </span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <a href="#metodo">Método</a>
+        <a href="#procedimentos">Procedimentos</a>
+        <a href="#experiencia">Experiência</a>
+      </nav>
+
+      <a class="btn btn-primary desktop-cta" href="https://wa.me/5551983331128?text=Ol%C3%A1%2C%20vim%20pelo%20preview%20da%20Cl%C3%ADnica%20Wasser%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        Agendar avaliação
+      </a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="label">Estética facial com critério clínico</span>
+
+          <h1 class="hero-title">
+            Beleza que aparece.
+            <em>Naturalidade que permanece.</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Estética, saúde e bem-estar com naturalidade.
+          </p>
+
+          <p class="hero-text">
+            A Wasser combina tecnologia, avaliação individual e procedimentos estéticos avançados para realçar traços, cuidar da pele e construir resultados elegantes — sem exageros.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5551983331128?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Wasser." target="_blank" rel="noopener">
+              Agendar avaliação
+            </a>
+            <a class="btn btn-ghost" href="#procedimentos">
+              Conhecer procedimentos
+            </a>
+          </div>
+
+          <div class="micro-proof" aria-label="Destaques da clínica">
+            <span>Mais de 10 mil pacientes</span>
+            <span>Planejamento individual</span>
+            <span>Resultados naturais</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="portrait-card">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=88" alt="Ambiente premium de estética facial com atendimento profissional" />
+          </div>
+
+          <div class="scan-card">
+            <span>Análise precisa</span>
+            <strong>Scanner facial e plano estético personalizado.</strong>
+            <small>Decisões mais seguras para cada pele, rosto e objetivo.</small>
+          </div>
+
+          <div class="signature-card">
+            <small>Assinatura Wasser</small>
+            <strong>Um olhar técnico para valorizar sua identidade, não transformar quem você é.</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-strip" aria-label="Números e diferenciais">
+      <div class="container">
+        <div class="stats-box">
+          <div class="stat">
+            <strong>10k+</strong>
+            <span>pacientes atendidos com cuidado e acompanhamento.</span>
+          </div>
+          <div class="stat">
+            <strong>360°</strong>
+            <span>visão completa de pele, face, cabelo e autoestima.</span>
+          </div>
+          <div class="stat">
+            <strong>Natural</strong>
+            <span>resultado elegante, sem perder expressão.</span>
+          </div>
+          <div class="stat">
+            <strong>Plano</strong>
+            <span>cada indicação nasce de uma avaliação individual.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="container">
+        <div class="editorial-panel">
+          <div class="editorial-image">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1400&q=88" alt="Procedimento facial em clínica estética premium" />
+          </div>
+
+          <div class="editorial-copy">
+            <span class="kicker">Método Wasser</span>
+            <h3>Antes do procedimento, vem o plano.</h3>
+            <p>
+              A Wasser não parte da pergunta “o que você quer fazer?”. O cuidado começa entendendo o que você deseja melhorar, o que precisa ser preservado e qual combinação de técnicas faz sentido para o seu rosto.
+            </p>
+            <p>
+              Esse olhar evita excessos, melhora a segurança da indicação e transforma a avaliação em uma experiência mais clara, acolhedora e profissional.
+            </p>
+
+            <div class="quiet-list">
+              <div class="quiet-item">
+                <i>1</i>
+                <div>
+                  <strong>Escuta e avaliação</strong>
+                  <span>Entendimento do objetivo, histórico e expectativa.</span>
+                </div>
+              </div>
+              <div class="quiet-item">
+                <i>2</i>
+                <div>
+                  <strong>Leitura facial e pele</strong>
+                  <span>Análise para indicar o que realmente faz sentido.</span>
+                </div>
+              </div>
+              <div class="quiet-item">
+                <i>3</i>
+                <div>
+                  <strong>Plano de cuidado</strong>
+                  <span>Procedimentos organizados por prioridade, segurança e naturalidade.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/5551983331128?text=Ol%C3%A1%2C%20quero%20entender%20qual%20procedimento%20faz%20mais%20sentido%20para%20mim%20na%20Cl%C3%ADnica%20Wasser." target="_blank" rel="noopener">
+                Conversar pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="procedimentos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Procedimentos</span>
+            <h2>Recursos avançados para pele, face e autoestima.</h2>
+          </div>
+          <p class="lead">
+            Uma seleção de tratamentos para quem busca rejuvenescimento, prevenção, equilíbrio facial, saúde da pele e cuidado capilar com acompanhamento profissional.
+          </p>
+        </div>
+
+        <div class="treatments">
+          <article class="treatment-card">
+            <span class="treatment-number">01</span>
+            <h3>Botox</h3>
+            <p>Suavização de linhas de expressão com aparência descansada, leve e natural.</p>
+          </article>
+
+          <article class="treatment-card">
+            <span class="treatment-number">02</span>
+            <h3>Harmonização facial</h3>
+            <p>Equilíbrio de proporções com foco em preservar identidade, expressão e elegância.</p>
+          </article>
+
+          <article class="treatment-card">
+            <span class="treatment-number">03</span>
+            <h3>Bioestimulação</h3>
+            <p>Estímulo de colágeno para firmeza, textura, qualidade de pele e prevenção.</p>
+          </article>
+
+          <article class="treatment-card wide">
+            <span class="treatment-number">04</span>
+            <h3>Rejuvenescimento inteligente</h3>
+            <p>Combinação estratégica de técnicas para tratar sinais do tempo sem descaracterizar o rosto.</p>
+          </article>
+
+          <article class="treatment-card">
+            <span class="treatment-number">05</span>
+            <h3>Tratamento capilar</h3>
+            <p>Cuidado direcionado para fortalecer fios, couro cabeludo e saúde capilar.</p>
+          </article>
+
+          <article class="treatment-card">
+            <span class="treatment-number">06</span>
+            <h3>Scanner facial</h3>
+            <p>Análise visual para apoiar decisões mais precisas e personalizadas.</p>
+          </article>
+
+          <article class="treatment-card wide">
+            <span class="treatment-number">07</span>
+            <h3>Saúde da pele</h3>
+            <p>Protocolos para viço, textura, manchas, hidratação, poros e manutenção da qualidade da pele.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <div class="container">
+        <div class="difference">
+          <div class="difference-inner">
+            <div>
+              <span class="kicker">Por que escolher a Wasser</span>
+              <h2>Uma clínica para quem quer se cuidar com segurança.</h2>
+              <p class="lead">
+                O diferencial está na soma entre técnica, bom gosto, ambiente premium e uma condução humana desde a avaliação até o pós-procedimento.
+              </p>
+            </div>
+
+            <div class="difference-list">
+              <div class="difference-item">
+                <i>✓</i>
+                <div>
+                  <strong>Naturalidade nos resultados</strong>
+                  <span>Procedimentos pensados para realçar, não exagerar.</span>
+                </div>
+              </div>
+
+              <div class="difference-item">
+                <i>✓</i>
+                <div>
+                  <strong>Experiência profissional</strong>
+                  <span>Indicações com critério, responsabilidade e clareza.</span>
+                </div>
+              </div>
+
+              <div class="difference-item">
+                <i>✓</i>
+                <div>
+                  <strong>Ambiente premium e acolhedor</strong>
+                  <span>Uma experiência estética com conforto, calma e confiança.</span>
+                </div>
+              </div>
+
+              <div class="difference-item">
+                <i>✓</i>
+                <div>
+                  <strong>Atendimento humanizado</strong>
+                  <span>Escuta, orientação e cuidado em cada etapa.</span>
+                </div>
+              </div>
+
+              <div class="difference-item">
+                <i>✓</i>
+                <div>
+                  <strong>Planejamento estético individual</strong>
+                  <span>O caminho é criado para cada paciente, não copiado de uma tendência.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="padding-bottom: 0;">
+          <div class="section-head">
+            <div>
+              <span class="kicker">Experiência</span>
+              <h2>Cuidado premium também é clareza.</h2>
+            </div>
+            <p class="lead">
+              Quem chega pelo Instagram precisa entender rapidamente por que a clínica é confiável, o que ela oferece e qual é o próximo passo.
+            </p>
+          </div>
+
+          <div class="experience-grid">
+            <article class="experience-card">
+              <span class="tag">Avaliação</span>
+              <h3>Decisão orientada</h3>
+              <p>O paciente entende possibilidades, prioridades e expectativas antes de escolher qualquer procedimento.</p>
+            </article>
+
+            <article class="experience-card">
+              <span class="tag">Naturalidade</span>
+              <h3>Sem padrão artificial</h3>
+              <p>A proposta é respeitar o rosto e construir um resultado que pareça seu — só que mais cuidado.</p>
+            </article>
+
+            <article class="experience-card">
+              <span class="tag">Segurança</span>
+              <h3>Confiança no processo</h3>
+              <p>Do primeiro contato ao pós, a comunicação precisa ser clara, elegante e acolhedora.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="feedbacks">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Feedbacks</span>
+            <h2>O tipo de resultado que gera indicação.</h2>
+          </div>
+          <p class="lead">
+            Depoimentos discretos, sem exagero comercial, reforçando o que importa: segurança, acolhimento e naturalidade.
+          </p>
+        </div>
+
+        <div class="feedbacks">
+          <article class="feedback-card">
+            <div class="stars">★★★★★</div>
+            <p>“A avaliação foi muito clara. Entendi o que fazia sentido para mim e o resultado ficou leve.”</p>
+            <strong>Paciente Wasser</strong>
+          </article>
+
+          <article class="feedback-card">
+            <div class="stars">★★★★★</div>
+            <p>“Gostei porque não senti pressão. Foi tudo explicado com calma e muito profissionalismo.”</p>
+            <strong>Paciente Wasser</strong>
+          </article>
+
+          <article class="feedback-card">
+            <div class="stars">★★★★★</div>
+            <p>“Ficou natural, exatamente como eu queria. As pessoas perceberam que eu estava melhor, não diferente.”</p>
+            <strong>Paciente Wasser</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <span class="kicker">Primeiro passo</span>
+          <h2>Agende sua avaliação e descubra o plano ideal para você.</h2>
+          <p>
+            Envie uma mensagem para a equipe da Clínica Wasser e converse sobre seus objetivos com segurança, naturalidade e orientação profissional.
+          </p>
+
+          <a class="btn btn-primary" href="https://wa.me/5551983331128?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Wasser." target="_blank" rel="noopener">
+            Agendar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div>
+        <strong>Clínica Wasser</strong>
+        <p>Estética facial avançada, saúde da pele e cuidado personalizado.</p>
+        <p class="footer-pill">Endereço: inserir endereço oficial da clínica</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://instagram.com/clinicawasser" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/5551983331128" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
